@@ -50,14 +50,14 @@ official course discription: https://aistudio.baidu.com/aistudio/course/introduc
 
 ## 参考资料 
 
-[图像分割7日打卡营常见问题汇总](https://aistudio.baidu.com/aistudio/projectdetail/1100155) `:https://aistudio.baidu.com/aistudio/projectdetail/1100155`
+[图像分割7日打卡营常见问题汇总](https://aistudio.baidu.com/aistudio/projectdetail/1100155) `https://aistudio.baidu.com/aistudio/projectdetail/1100155`
 
-[PaddlePaddle使用教程](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/guides/index_cn.html) `:https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/guides/index_cn.html`
+[PaddlePaddle使用教程](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/guides/index_cn.html) `https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/guides/index_cn.html`
 
-[本地安装PaddlePaddle的常见错误]() `:https://aistudio.baidu.com/aistudio/projectdetail/697227`
+[本地安装PaddlePaddle的常见错误]() `https://aistudio.baidu.com/aistudio/projectdetail/697227`
 
-[API文档](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/index_cn.html) `:https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/index_cn.html`
+[API文档](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/index_cn.html) `https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/index_cn.html`
 
-[PaddlePaddle/hapi Github](https://github.com/PaddlePaddle/hapi) `:https://github.com/PaddlePaddle/hapi`
+[PaddlePaddle/hapi Github](https://github.com/PaddlePaddle/hapi) `https://github.com/PaddlePaddle/hapi`
 
-[Github使用](https://guides.github.com/activities/hello-world/) `:https://guides.github.com/activities/hello-world/`
+[Github使用](https://guides.github.com/activities/hello-world/) `https://guides.github.com/activities/hello-world/`
