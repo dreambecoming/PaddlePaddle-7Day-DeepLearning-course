@@ -70,7 +70,8 @@
 
 下面是常见的一些数学基础概念，建议大家收藏后再仔细阅读，遇到不懂的概念可以直接在这里查~
 
-
+![](http://latex.codecogs.com/svg.latex?\\
+$f'({{x}_{0}})=\underset{\Delta x\to 0}{\mathop{\lim }}\,\frac{f({{x}_{0}}+\Delta x)-f({{x}_{0}})}{\Delta x}$   )
 ### 高等数学
 
 **1.导数定义：**
