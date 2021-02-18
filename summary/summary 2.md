@@ -1,26 +1,88 @@
-```mermaid
-graph LR
-  subgraph g1
-    a1-->b1
-  end
-  subgraph g2
-    a2-->b2
-  end
-  subgraph g3
-    a3-->b3
-  end
-  a3-->a2
-```
+# 百度飞桨深度学习7日打卡营 课程总结2
+![paddlepaddle](https://paddlepaddle-org-cn.cdn.bcebos.com/paddle-site-front/favicon-128.png  "百度logo")
 
-```mermaid
-flowchat
-st=>start: Start
-e=>end: End
-op1=>operation: Operation
-sub1=>subroutine: Subroutine
-cond=>condition: yes or no ?
-io=>inputoutput: proceess something...
-st->op1->cond`
-cond(yes)->io->e`
-cond(no)->sub1(right)->op1
-```
+[课程链接](https://aistudio.baidu.com/aistudio/course/introduce/6771)	`https://aistudio.baidu.com/aistudio/course/introduce/7073`  
+[飞桨官网](https://www.paddlepaddle.org.cn/)	`https://www.paddlepaddle.org.cn/`   
+
+****
+## 目录
+* [课程介绍](#课程介绍)
+* [人工智能](#人工智能)
+    * [人工智能、机器学习和深度学习三者关系]
+    * [机器学习]
+* [Python基础](# Python基础)
+* [示例1.手写数字分类](# 示例1手写数字分类)
+* [预习作业](# 预习作业)
+    * [客观题](# 客观题)
+    * [实战题](# 实战题)
+
+# 课节2：走进深度学习与飞桨高层API
+（正式第一课）
+## 课程介绍
+《深度学习7日打卡营》
+* 课程大纲
+    1.深度学习入门：    深度学习简介；深度学习大致的原理；快速上手实践。
+    2.CV+NLP：  实践图像分类、人脸关键点检测、情感分析、文本生成。
+    3.部署上手：    带你将模型部署到开发板，完成端到端的学习。
+* 课程收获
+    -深度学习相关的基础概念
+    -计算机视觉领域一些基础和算法
+    -自然语言处理领域一些基础和算法
+    -端到端的案例代码实践
+    -PaddlePaddle深度学习框架（高层APl）
+    -模型部署中的一种方法
+    -自己能应用PaddlePaddle高层API完整搭建并训练一个深度学习网络。
+* 使用工具
+    -编程语言：Python
+    -深度学习框架：PaddlePaddle
+    -其他Python包：NumPy、Pillow
+    -深度学习算法：Linear、LeNet、ResNet、LSTM、Seq2Seq 等等
+* 课程形式
+    在线授课：作业实践：项目实践 = 2:1:1
+
+## 人工智能
+* 人工智能是新一轮科技革命和产业变革核心驱动力量
+    第一次工业革命：机械技术
+    第二次工业革命：电气技术
+    第三次工业革命：信息技术
+    第四次工业革命：人工智能
+
+### 人工智能、机器学习和深度学习三者关系
+
+    人工智能：人类想要达成的目标
+    机器学习：人工智能达成的一个手段
+    深度学习：机器学习其中的一种方法
+
+### 机器学习
+* 机器学习是仿人的一套归纳和演绎过程
+  |  	       |     	   | 	 经验	  |  	        |  	      	 | 
+  |:------: | :-------:|:--------:|:---------:|:--  ------:|
+  |  	       |     	   | 	 经验	  |  	        |  	      	 | 
+  |  	   	   | 输入    |  ↓ 归纳  |   演绎	  |  	      	 | 
+  | 新的问题 |   →     | 规律	    |     →     |     未来	 | 
+  
+  
+  |  	       |     	   | 	 经验	  |  	        |  	      	 |  
+  |:------: | :-------:|:--------:|:---------:|:--  ------:|
+  |  	   	   | 输入    |  ↓ 归纳  |   演绎	  |  	      	 | 
+  | 新的问题 |   →     | 规律	    |     →     |     未来	 | 
+  
+* 机器学习算法构成的三要素  
+    1.假设空间：模型的假设或表示  
+    2.优化目标：评价或损失函数（Loss）  
+    3.寻解算法：优化/求解算法  
+
+神经元：神经网络中的每个节点称为神经元，由加权和|非线性变换（激活函数）|组成。
+神经网络：大量的神经元按照不同的层次排布，形成多层的结构连接起来，即称为神经网络。
+前向计算和反向传播：网络的输出计算和参数更新。
+2010年后，深度学习的条件成熟：大数据时代到来、硬件的发展和成熟、算法优化。
+关键环节：数据、模型、训练和预测。
+一般流程：问题定义、数据准备、模型选择和开发、模型训练和调优、模型评估测试、部署上线。
+
+飞桨 （PaddlePaddle，PArallel Distributed Deep Learning）2.0版本 
+官网：https://www.paddlepaddle.org.cn/
+Github:	https://github.com/PaddlePaddle/Paddle
+
+
+
+
