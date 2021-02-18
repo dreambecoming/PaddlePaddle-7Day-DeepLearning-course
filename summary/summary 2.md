@@ -391,13 +391,10 @@ plt.show()
 标签：
 <class 'numpy.ndarray'>
 [5]
-/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2349: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
-  if isinstance(obj, collections.Iterator):
-/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2366: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
-  return list(data) if isinstance(data, collections.MappingView) else data
-/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
-  'a.item() instead', DeprecationWarning, stacklevel=1)
 
+图片数字“5”
+
+<Figure size 432x288 with 1 Axes>
 ```
 ### 模型选择和开发
 3.1 模型组网
@@ -462,9 +459,9 @@ Epoch 1/5
 step  20/938 [..............................] - loss: 0.6420 - acc: 0.5969 - ETA: 12s - 13ms/ste
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/paddle/fluid/layers/utils.py:77: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
   return (isinstance(seq, collections.Sequence) and
-``
+
 step  30/938 [..............................] - loss: 0.5265 - acc: 0.6609 - ETA: 11s - 13ms/step
-``
+
 step  40/938 [>.............................] - loss: 0.5089 - acc: 0.7086 - ETA: 10s - 12ms/step
 step 938/938 [==============================] - loss: 0.2390 - acc: 0.9125 - 11ms/step         
 Eval begin...
@@ -535,6 +532,18 @@ for idx in indexs:
 Predict begin...
 step 10000/10000 [==============================] - 2ms/step        
 Predict samples: 10000
+
+图片数字“1”  
+<Figure size 432x288 with 1 Axes>
+
+图片数字“5”  
+<Figure size 432x288 with 1 Axes>
+
+图片数字“2”  
+<Figure size 432x288 with 1 Axes>
+
+图片数字“5”  
+<Figure size 432x288 with 1 Axes>
 ```
 5.2.2 单张图片预测
 采用model.predict_batch来进行单张或少量多张图片的预测。
