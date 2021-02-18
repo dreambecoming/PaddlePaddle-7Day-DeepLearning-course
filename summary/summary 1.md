@@ -1282,4 +1282,4 @@ print("该图片的预测结果的label为: %d" % lab[0][0][-1][0])  #-1代表�
     手把手教你 win10 安装Paddlepaddle-GPU：https://aistudio.baidu.com/aistudio/projectdetail/696822
     
    
-![截图](https://ai-studio-static-online.cdn.bcebos.com/4363153967a7497b9d95c17c06ac20aadfba08424c594894a3c57f04f6b45d5a"作业截图")
+![截图](/materials/screenshot.jpg"作业截图")
