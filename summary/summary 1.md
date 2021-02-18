@@ -1,3 +1,15 @@
+<head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head>
+
 # 百度飞桨深度学习7日打卡营 课程总结1
 ![paddlepaddle](https://paddlepaddle-org-cn.cdn.bcebos.com/paddle-site-front/favicon-128.png  "百度logo")
 
@@ -70,17 +82,6 @@
 
 下面是常见的一些数学基础概念，建议大家收藏后再仔细阅读，遇到不懂的概念可以直接在这里查~
 
-![](http://latex.codecogs.com/svg.latex?\\$f'({{x}_{0}})=\underset{\Delta x\to 0}{\mathop{\lim }}\,\frac{f({{x}_{0}}+\Delta x)-f({{x}_{0}})}{\Delta x}$)
-
-<img src="http://latex.codecogs.com/gif.latex?\frac{\partial J}{\partial \theta_k^{(j)}}=\sum_{i:r(i,j)=1}{\big((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\big)x_k^{(i)}}+\lambda \theta_k^{(j)}" />
-
-![](http://latex.codecogs.com/gif.latex?\frac{\\partial J}{\\partial \\theta_k^{(j)}}=\\sum_{i:r(i,j)=1}{\\big((\\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\\big)x_k^{(i)}}+\\lambda \\xtheta_k^{(j)})
-
-$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$
-
-$$
-x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
-$$
 
 ### 高等数学
 
