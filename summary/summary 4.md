@@ -907,8 +907,11 @@ custom_output(rgb_img, out, batch_size=1)
 
 『深度学习7日打卡营』人脸关键点检测
 
+参考 课上代码。
 
+自己可以尝试PPT最后的模型：
+* DCNN    Cascade 香港中文大学2013年提出，最早使用CNN进行人脸关键点检测，使用Cascade（级连）流程来解决人脸关键点检测问题的框架，由粗到精，就是它的基本思想。
+* TCDCN   MMLAB 于2014年提出，使用多任务学习提升人脸关键点检测的准确度，相关任务有：Head Pose Estimation 和 Facial Attribute Inference。
+* Look at Boundary    由清华大学、武汉大学和商汤联合提出，通过预测 Estimated Boundary Heatmap 辅助人脸关键点检测。为提高所生成 Estimated Boundary Heatmap 的质量，作者还引入了   Adversarial Learning 的思想。
+* PFLD    由清华大学、武汉大学和商汤联合提出，其主要思路为通过Auxiliary Net对人脸的旋转角度进行估计（仅在训练阶段），从而计算该样本的loss权重，最终达到缓解极端角度问题的效果。
 
-# 可视化
-custom_output(rgb_img, out, batch_size=1)
-```
