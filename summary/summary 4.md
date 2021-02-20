@@ -108,7 +108,9 @@ import warnings
 warnings.filterwarnings('ignore') # 忽略 warning
 ```
 #### 数据准备
+
 2.1 下载数据集
+
 本次实验所采用的数据集来源为github的[开源项目](https://github.com/udacity/P1_Facial_Keypoints)。
 
 目前该数据集已上传到 AI Studio [人脸关键点识别](https://aistudio.baidu.com/aistudio/datasetdetail/69065)，加载后可以直接使用下面的命令解压。
@@ -168,6 +170,7 @@ Number of images:  3462
 * 21点  
 * 68点  
 * 98点    
+
 本次所采用的68标注。  
 ```python
 # 计算标签的均值和标准差，用于标签的归一化
@@ -182,7 +185,7 @@ print('标签的标准差为:', data_std)
 标签的均值为: 104.4724870017331
 标签的标准差为: 43.17302271754281
 ```
-2.2 查看图像
+2.2 查看图像  
 ```python
 def show_keypoints(image, key_pts):
     """
@@ -208,6 +211,7 @@ show_keypoints(mpimg.imread(os.path.join('data/training/', image_name)), key_pts
 plt.show() # 展示图像
 ```
 2.3 数据集定义
+
 使用飞桨框架高层API的 paddle.io.Dataset 自定义数据集类，具体可以参考官网文档 [自定义数据集](https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/02_paddle2.0_develop/02_data_load_cn.html#id3)。
 
 ```python
@@ -268,6 +272,7 @@ class FacialKeypointsDataset(Dataset):
 
 ```
 2.4 训练集可视化
+
 实例化数据集并显示一些图像。
 
 ```python
@@ -310,6 +315,7 @@ for i in range(num_to_display):
 
 
 2.5 Transforms
+
 对图像进行预处理，包括灰度化、归一化、重新设置尺寸、随机裁剪，修改通道格式等等，以满足数据要求；每一类的功能如下：
 
 * 灰度化：丢弃颜色信息，保留图像边缘信息；识别算法对于颜色的依赖性不强，加上颜色后鲁棒性会下降，而且灰度化图像维度下降（3->1），保留梯度的同时会加快计算。
@@ -482,7 +488,8 @@ for i, func_name in enumerate(['None', 'norm', 'random_crop', 'resize', 'compose
     # 输出图片
     show_keypoints(transformed_sample[0], transformed_sample[1])   
 ```
-2.6 使用数据预处理的方式完成数据定义
+2.6 使用数据预处理的方式完成数据定义  
+
 让我们将 Resize、RandomCrop、GrayNormalize、ToCHW 应用于新的数据集
 
 ```python
@@ -507,7 +514,9 @@ test_dataset = FacialKeypointsDataset(csv_file='data/test_frames_keypoints.csv',
 print('Number of test dataset images: ', len(test_dataset))
 ```
 #### 模型组建
+
 3.1 组网可以很简单
+
 根据前文的分析可知，人脸关键点检测和分类，可以使用同样的网络结构，如LeNet、Resnet50等完成特征的提取，只是在原来的基础上，需要修改模型的最后部分，将输出调整为 人脸关键点的数量*2，即每个人脸关键点的横坐标与纵坐标，就可以完成人脸关键点检测任务了，具体可以见下面的代码，也可以参考官网案例:[人脸关键点检测](https://www.paddlepaddle.org.cn/documentation/docs/zh/tutorial/cv_case/landmark_detection/landmark_detection.html)。
 
 网络结构如下：
@@ -543,6 +552,7 @@ class SimpleNet(nn.Layer):
         return x
 ```
 3.2 网络结构可视化
+
 使用model.summary可视化网络结构。
 
 ```python
@@ -550,7 +560,9 @@ model = paddle.Model(SimpleNet(key_pts=68))
 model.summary((-1, 3, 224, 224))
 ```
 #### 模型训练
+
 4.1 模型配置
+
 训练模型前，需要设置训练模型所需的优化器，损失函数和评估指标。
 
 * 优化器：Adam优化器，快速收敛。
@@ -558,6 +570,7 @@ model.summary((-1, 3, 224, 224))
 * 评估指标：NME
 
 4.2 自定义评估指标
+
 特定任务的 Metric 计算方式在框架既有的 Metric接口中不存在，或算法不符合自己的需求，那么需要我们自己来进行Metric的自定义。这里介绍如何进行Metric的自定义操作，更多信息可以参考官网文档[自定义Metric](https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/02_paddle2.0_develop/07_customize_cn.html#metric)；首先来看下面的代码。
 ```python
 from paddle.metric import Metric
@@ -638,6 +651,7 @@ model.prepare(optimizer=optimizer, loss=loss, metrics=metric)
 * L1Loss: 在训练后期，预测值与ground-truth差异较小时，损失对预测值的导数的绝对值仍然为1，此时如果学习率不变，损失函数将在稳定值附近波动，难以继续收敛达到更高精度。
 * L2Loss: 在训练初期，预测值与ground-truth差异较大时，损失函数对预测值的梯度十分大，导致训练不稳定。
 * SmoothL1Loss: 在x较小时，对x梯度也会变小，而在x很大时，对x的梯度的绝对值达到上限 1，也不会太大以至于破坏网络参数。
+
 4.2 模型训练
 ```python
 model.fit(train_dataset, epochs=50, batch_size=64, verbose=1)
@@ -734,6 +748,7 @@ out = out[0].reshape((out[0].shape[0], 136, -1))
 visualize_output(rgb_img, out, batch_size=1)
 ```
 #### 趣味应用
+
 当我们得到关键点的信息后，就可以进行一些趣味的应用。
 ```python
 # 定义功能函数
