@@ -10,6 +10,12 @@
 * [图像分类](#图像分类)
 * [基础知识](#基础知识)
 * [『深度学习7日打卡营』 人脸关键点检测](#深度学习7日打卡营-人脸关键点检测)
+   * [问题定义](#问题定义)
+   * [数据准备](#数据准备)
+   * [模型选择和开发](#模型选择和开发)
+   * [模型训练和调优](#模型训练和调优)
+   * [模型评估测试](#模型评估测试)
+   * [趣味应用](#趣味应用)
 * [作业三](#作业三)
     * [客观题](#客观题)
     * [代码实践](#代码实践)
@@ -42,7 +48,7 @@
       * 方式2：Subclass  
       * 方式3：内置网络  
     
-    `input → backbone → Linear → ReLU → Linear → output`
+    input → backbone → Linear → ReLU → Linear → output
     
    4. 模型训练和调优：
       
@@ -492,14 +498,15 @@ test_dataset = FacialKeypointsDataset(csv_file='data/test_frames_keypoints.csv',
 
 print('Number of test dataset images: ', len(test_dataset))
 ```
-### 模型组建
+### 模型选择和开发
 
-3.1 组网可以很简单
+3.1 组网
 
 根据前文的分析可知，人脸关键点检测和分类，可以使用同样的网络结构，如LeNet、Resnet50等完成特征的提取，只是在原来的基础上，需要修改模型的最后部分，将输出调整为 人脸关键点的数量*2，即每个人脸关键点的横坐标与纵坐标，就可以完成人脸关键点检测任务了，具体可以见下面的代码，也可以参考官网案例:[人脸关键点检测](https://www.paddlepaddle.org.cn/documentation/docs/zh/tutorial/cv_case/landmark_detection/landmark_detection.html)。
 
 网络结构如下：
-`input → backbone → Linear → ReLU → Linear → output`
+
+      input → backbone → Linear → ReLU → Linear → output
 
 ```python
 import paddle.nn as nn
@@ -539,7 +546,7 @@ class SimpleNet(nn.Layer):
 model = paddle.Model(SimpleNet(key_pts=68))
 model.summary((-1, 3, 224, 224))
 ```
-### 模型训练
+### 模型训练和调优
 
 4.1 模型配置
 
@@ -641,7 +648,7 @@ model.fit(train_dataset, epochs=50, batch_size=64, verbose=1)
 checkpoints_path = './checkpoints/models'
 model.save(checkpoints_path)
 ```
-### 模型预测
+### 模型评估测试
 ```python
 # 定义功能函数
 
@@ -825,6 +832,11 @@ img = np.array([img], dtype='float32')
 # 预测结果
 out = model.predict_batch([img])
 out = out[0].reshape((out[0].shape[0], 136, -1))
+
+# 可视化
+custom_output(rgb_img, out, batch_size=1)
+```
+
 ## 作业三
 ### 客观题
 一. 单选题（共4题，共60分）
