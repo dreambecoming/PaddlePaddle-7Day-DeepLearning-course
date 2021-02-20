@@ -215,7 +215,7 @@ print("该图片的预测结果的label为: %d" % lab[0][0][-1][0])  #-1代表�
 
 ## 数学基础知识
 高等数学、线性代数、概率论和数理统计  
-详见：https://aistudio.baidu.com/aistudio/projectdetail/1497905 或 ![math.md](summary/math.md)
+详见：https://aistudio.baidu.com/aistudio/projectdetail/1497905 或 [math.md](summary/math.md)
 
 
 ## Python基础
