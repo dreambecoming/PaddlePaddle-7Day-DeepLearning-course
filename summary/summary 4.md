@@ -9,86 +9,65 @@
 ## 目录
 * [图像分类](#图像分类)
 * [基础知识](#基础知识)
-* [案例1：初识卷积神经网络](#案例1初识卷积神经网络)
+* [『深度学习7日打卡营』 人脸关键点检测](#深度学习7日打卡营-人脸关键点检测)
 * [作业三](#作业三)
     * [客观题](#客观题)
     * [代码实践](#代码实践)
 
 # 课节3：人脸关键点检测
-## 
+##
 
 
-## 作业三
-### 客观题
-一. 单选题（共4题，共60分）
+## 『深度学习7日打卡营』 人脸关键点检测
 
-1. 一般情况下，回归任务的输出是离散值还是连续值？（15分）
+流程：  
 
->A.离散值
+   1. 问题定义：对现实问题进行分析。直接影响算法的选择、模型评估标准，投入的时间。  
+   
+   2. 数据准备：    
+      
+      我们使用paddle.io.Dataset与paddle.vision.transform.*完成数据加载与数据预处理
 
->B.连续值
+      训练样本量3，462张  
+      验证样本量770张  
+      单个样本形状（3，224，224）（处理后）  
+      加载使用方式paddle.io.Dataset  
+      数据预处理Resize、RandomCrop、Compose  
+      
+      
+   3. 模型选择和开发： 
+      
+      飞桨框架：  
+      * 方式1：Sequential   
+      * 方式2：Subclass  
+      * 方式3：内置网络  
+    
+    `input → backbone → Linear → ReLU → Linear → output`
+    
+   4. 模型训练和调优：
+      
+      * Model封装  
+      * 指定Adam优化器
+      * 指定Loss计算方法：SmoothL1Loss
+      * 指定评估指标：NME
+      * 按照训练的轮次和数据批次迭代训练
+   
+   5. 模型评估测试：
+   
+      模型评估：model.evaluate()  
+      模型测试：model.predict()  
+  
+      * 基于验证样本对模型进行评估验证
+      * 得到Loss和评价指标值
+   
+   6. 部署上线：模型存储、导出、推理服务部署线上系统对接，指标监控。  
+   
+      预测部署模型存储：model.save（path，training=False）  
+   
+      * 存储模型  
+      * 使用预测引擎部署 →  PaddleSlim  →  Paddlelnference、PaddleLite、PaddleJs
 
->答案：B
-
-2. 人脸关键点检测是分类任务还是回归任务？（15分）
-
->A.分类任务
-
->B.回归任务
-
->答案：B
-
-3. 人脸关键点检测可以用哪个评估指标评估？（15分）
-
->A.NME
-
->B.Accuracy
-
->答案：A
-
-4. 使用飞桨哪个API，可以组合数据预处理方法，依次对数据进行处理?（15分）
-
->A.paddle.io.Dataset
-
->B.paddle.vision.transforms.Compose
-
->C.paddle.vision.models.resnet50
-
->D.paddle.vision.transforms.ToTensor
-
->答案：B
-
-二. 多选题（共2题，共40分）
-
-1. 下列哪个损失函数可用于回归任务？（20分）
-
->A.L1Loss
-
->B.L2Loss
-
->C.SmoothL1Loss
-
->D.CrossEntropyLoss
-
->答案：A,B,C
-
-2. 图像常见的数据预处理的方法有？（20分）
-
->A.Grayscale
-
->B.Normalize
-
->C.Resize
-
->D.RandomCrop
-
->答案：A,B,C,D
-
-### 代码实践
-
-『深度学习7日打卡营』人脸关键点检测
-
-#### 问题定义
+### 问题定义
 
 人脸关键点检测，是输入一张人脸图片，模型会返回人脸关键点的一系列坐标，从而定位到人脸的关键信息。
 ```python
@@ -107,7 +86,7 @@ paddle.set_device('gpu') # 设置为GPU
 import warnings 
 warnings.filterwarnings('ignore') # 忽略 warning
 ```
-#### 数据准备
+### 数据准备
 
 2.1 下载数据集
 
@@ -513,7 +492,7 @@ test_dataset = FacialKeypointsDataset(csv_file='data/test_frames_keypoints.csv',
 
 print('Number of test dataset images: ', len(test_dataset))
 ```
-#### 模型组建
+### 模型组建
 
 3.1 组网可以很简单
 
@@ -521,6 +500,7 @@ print('Number of test dataset images: ', len(test_dataset))
 
 网络结构如下：
 `input → backbone → Linear → ReLU → Linear → output`
+
 ```python
 import paddle.nn as nn
 from paddle.vision.models import resnet50
@@ -559,7 +539,7 @@ class SimpleNet(nn.Layer):
 model = paddle.Model(SimpleNet(key_pts=68))
 model.summary((-1, 3, 224, 224))
 ```
-#### 模型训练
+### 模型训练
 
 4.1 模型配置
 
@@ -661,7 +641,7 @@ model.fit(train_dataset, epochs=50, batch_size=64, verbose=1)
 checkpoints_path = './checkpoints/models'
 model.save(checkpoints_path)
 ```
-#### 模型预测
+### 模型预测
 ```python
 # 定义功能函数
 
@@ -747,7 +727,7 @@ out = out[0].reshape((out[0].shape[0], 136, -1))
 # 可视化
 visualize_output(rgb_img, out, batch_size=1)
 ```
-#### 趣味应用
+### 趣味应用
 
 当我们得到关键点的信息后，就可以进行一些趣味的应用。
 ```python
@@ -845,6 +825,77 @@ img = np.array([img], dtype='float32')
 # 预测结果
 out = model.predict_batch([img])
 out = out[0].reshape((out[0].shape[0], 136, -1))
+## 作业三
+### 客观题
+一. 单选题（共4题，共60分）
+
+1. 一般情况下，回归任务的输出是离散值还是连续值？（15分）
+
+>A.离散值
+
+>B.连续值
+
+>答案：B
+
+2. 人脸关键点检测是分类任务还是回归任务？（15分）
+
+>A.分类任务
+
+>B.回归任务
+
+>答案：B
+
+3. 人脸关键点检测可以用哪个评估指标评估？（15分）
+
+>A.NME
+
+>B.Accuracy
+
+>答案：A
+
+4. 使用飞桨哪个API，可以组合数据预处理方法，依次对数据进行处理?（15分）
+
+>A.paddle.io.Dataset
+
+>B.paddle.vision.transforms.Compose
+
+>C.paddle.vision.models.resnet50
+
+>D.paddle.vision.transforms.ToTensor
+
+>答案：B
+
+二. 多选题（共2题，共40分）
+
+1. 下列哪个损失函数可用于回归任务？（20分）
+
+>A.L1Loss
+
+>B.L2Loss
+
+>C.SmoothL1Loss
+
+>D.CrossEntropyLoss
+
+>答案：A,B,C
+
+2. 图像常见的数据预处理的方法有？（20分）
+
+>A.Grayscale
+
+>B.Normalize
+
+>C.Resize
+
+>D.RandomCrop
+
+>答案：A,B,C,D
+
+### 代码实践
+
+『深度学习7日打卡营』人脸关键点检测
+
+
 
 # 可视化
 custom_output(rgb_img, out, batch_size=1)
