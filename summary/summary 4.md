@@ -21,7 +21,10 @@
     * [代码实践](#代码实践)
 
 # 课节3：人脸关键点检测
-##
+* 定量问题
+* 网络构建：input → backbone → Linear → ReLU → Linear → output
+* 损失函数：图像分类 CrossEntropyLoss：交叉熵的计算；人脸关键点检测：L1Loss、L2Loss、SmoothL1Loss：距离的计算。
+* 评估指标：NME（Normalized Mean Error），所有预测点和 ground-truth 之间的 L2 Norm，除以（关键点的个数`*`两只眼睛之间的距离）。
 
 
 ## 『深度学习7日打卡营』 人脸关键点检测
@@ -917,5 +920,5 @@ custom_output(rgb_img, out, batch_size=1)
 
 * Look at Boundary：由清华大学、武汉大学和商汤联合提出，通过预测 Estimated Boundary Heatmap 辅助人脸关键点检测。为提高所生成 Estimated Boundary Heatmap 的质量，作者还引入了   Adversarial Learning 的思想。
 
-* PFLD：由清华大学、武汉大学和商汤联合提出，其主要思路为通过Auxiliary Net对人脸的旋转角度进行估计（仅在训练阶段），从而计算该样本的loss权重，最终达到缓解极端角度问题的效果。
+* PFLD：由清华大学、武汉大学和商汤联合提出，其主要思路为通过 Auxiliary Net 对人脸的旋转角度进行估计（仅在训练阶段），从而计算该样本的loss权重，最终达到缓解极端角度问题的效果。
 
