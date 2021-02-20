@@ -10,6 +10,9 @@
 * [深度学习基本概念](#深度学习基本概念)
 * [数学基础知识](#数学基础知识)
 * [Python基础](#Python基础)
+* [Notebook基础操作](#Notebook基础操作)
+* [PaddlePaddle快速入门](#PaddlePaddle快速入门)
+* [Debug基础教学](#Debug基础教学)
 * [预习作业](#预习作业)
     * [客观题](#客观题)
     * [安装飞桨](#安装飞桨)
@@ -217,10 +220,18 @@ print("该图片的预测结果的label为: %d" % lab[0][0][-1][0])  #-1代表�
 高等数学、线性代数、概率论和数理统计  
 详见：https://aistudio.baidu.com/aistudio/projectdetail/1497905 或 [math.md](/summary/math.md)
 
-
 ## Python基础
-Python是一门解释型、面向对象的高级编程语言。
+Python是一门解释型、面向对象的高级编程语言。  
+详见：https://aistudio.baidu.com/aistudio/projectdetail/1497963
 
+## Notebook基础操作  
+详见：https://aistudio.baidu.com/aistudio/projectdetail/1509311
+
+## PaddlePaddle快速入门  
+详见：https://aistudio.baidu.com/aistudio/projectdetail/1509291
+
+## Debug基础教学  
+详见：https://aistudio.baidu.com/aistudio/projectdetail/1522605
 
 ## 预习作业
 
