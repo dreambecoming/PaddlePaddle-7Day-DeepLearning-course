@@ -26,7 +26,7 @@
     运行：从左到右逐词处理，不断调用一个相同的网络单元  
     * 长短期记忆网络（Long Short-Term Memory networks，LSTM）
 
-##『PaddleNLP』利用情感分析选择年夜饭
+## 『PaddleNLP』利用情感分析选择年夜饭
 
 环境介绍:
 
