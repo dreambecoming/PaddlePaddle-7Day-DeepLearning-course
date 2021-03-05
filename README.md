@@ -1,4 +1,4 @@
-# PaddlePaddle-7Day-API-course  
+# PaddlePaddle-7Day-DeepLearning-course  
 personal course summary for Baidu AI's PaddlePaddle Deep Learning High-level API crash camp in Feb. 2021.  
 official course discription: https://aistudio.baidu.com/aistudio/course/introduce/6771  
 2月3日-2月10日，每晚 20:30-21:30 直播讲解
