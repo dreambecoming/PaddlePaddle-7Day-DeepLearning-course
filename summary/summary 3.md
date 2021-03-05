@@ -95,7 +95,7 @@ LeNet-5模型源于论文“LeCun Y, Bottou L, Bengio Y, et al. Gradient-based l
 
 ![LeNet-5模型](materials/LeNet-5模型.png)
 
-3.1.2 网络结构代码实现——方法1
+3.1.2 网络结构代码实现——1
 
 理解原论文进行的复现实现，因为模型论文出现在1998年，很多技术还不是最新。
 
@@ -123,7 +123,7 @@ network = nn.Sequential(
 ```python
 paddle.summary(network, (1, 1, 32, 32))
 ```
-3.1.3 网络结构代码实现——方法2
+3.1.3 网络结构代码实现——2
 
 应用了截止到现在为止新的技术点实现后的模型，用Sequential写法。
 
@@ -147,9 +147,9 @@ network_2 = nn.Sequential(
 ```python
 paddle.summary(network_2, (1, 1, 28, 28))
 ```
-3.1.4 网络结构代码实现——方法3
+3.1.4 网络结构代码实现——3
 
-应用了截止到现在为止新的技术点实现后的模型，模型结构和【网络结构代码实现——方法2】一致，用Sub Class写法。
+应用了截止到现在为止新的技术点实现后的模型，模型结构和【网络结构代码实现——2】一致，用Sub Class写法。
 ```python
 class LeNet(nn.Layer):
     """
