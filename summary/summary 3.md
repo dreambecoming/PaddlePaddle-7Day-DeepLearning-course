@@ -90,10 +90,13 @@ LeNet-5模型源于论文“LeCun Y, Bottou L, Bengio Y, et al. Gradient-based l
 论文地址：https://ieeexplore.ieee.org/document/726791
 
 3.1 网络结构定义
-3.1.1 模型介绍
-![](materials/LeNet-5模型.png)
 
-3.1.2 网络结构代码实现1
+5.1.1 模型介绍
+
+![LeNet-5模型](materials/LeNet-5模型.png)
+
+3.1.2 网络结构代码实现——方法1
+
 理解原论文进行的复现实现，因为模型论文出现在1998年，很多技术还不是最新。
 
 ```python
@@ -120,7 +123,8 @@ network = nn.Sequential(
 ```python
 paddle.summary(network, (1, 1, 32, 32))
 ```
-3.1.3 网络结构代码实现2
+3.1.3 网络结构代码实现——方法2
+
 应用了截止到现在为止新的技术点实现后的模型，用Sequential写法。
 
 ```python
@@ -143,8 +147,9 @@ network_2 = nn.Sequential(
 ```python
 paddle.summary(network_2, (1, 1, 28, 28))
 ```
-3.1.4 网络结构代码实现3
-应用了截止到现在为止新的技术点实现后的模型，模型结构和【网络结构代码实现2】一致，用Sub Class写法。
+3.1.4 网络结构代码实现——方法3
+
+应用了截止到现在为止新的技术点实现后的模型，模型结构和【网络结构代码实现——方法2】一致，用Sub Class写法。
 ```python
 class LeNet(nn.Layer):
     """
@@ -188,12 +193,13 @@ network_3 = LeNet()
 ```python
 paddle.summary(network_3, (1, 1, 28, 28))
 ```
-3.1.4 网络结构代码实现4
+3.1.4 网络结构代码实现——方法4
+
 直接应用高层API中封装好的LeNet网络接口。
 ```python
 network_4 = paddle.vision.models.LeNet(num_classes=10)
 ```
-模型可视化
+模型可视化  
 通过summary接口来查看搭建的网络结构，查看输入和输出形状，以及需要训练的参数信息。
 ```python
 paddle.summary(network_4, (1, 1, 28, 28))
